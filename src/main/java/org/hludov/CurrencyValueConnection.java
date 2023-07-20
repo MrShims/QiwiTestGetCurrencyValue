@@ -1,4 +1,4 @@
-package org.hludov.utils;
+package org.hludov;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -6,7 +6,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class XMLparser {
+import static org.hludov.XMLparser.parseXML;
+
+public class CurrencyValueConnection {
 
     public static String getCurrencyValue(String date, String charCode) {
         String apiURL = "http://www.cbr.ru/scripts/XML_daily.asp?date_req=" + date;
@@ -38,32 +40,6 @@ public class XMLparser {
         }
     }
 
-    public static String parseXML(String xmlData, String nameCurrency) {
 
-        String[] lines = xmlData.split("<Valute");
-        for (int i = 1; i < lines.length; i++) {
-            String line = lines[i];
-            String code = getValueByTag(line, "CharCode");
-
-            if (code.equals(nameCurrency)) {
-                String name = getValueByTag(line, "Name");
-                String value = getValueByTag(line, "Value");
-
-
-                return String.format("%s (%s): %s", code, name, value);
-
-            }
-
-        }
-        return "Валюта не найдена";
-    }
-
-    public static String getValueByTag(String line, String tag) {
-        String openTag = "<" + tag + ">";
-        String closeTag = "</" + tag + ">";
-        int startIndex = line.indexOf(openTag) + openTag.length();
-        int endIndex = line.indexOf(closeTag);
-        return line.substring(startIndex, endIndex);
-    }
 
 }
