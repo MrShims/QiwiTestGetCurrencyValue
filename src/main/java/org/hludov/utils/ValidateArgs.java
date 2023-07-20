@@ -2,6 +2,7 @@ package org.hludov.utils;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 
 public class ValidateArgs {
@@ -49,7 +50,7 @@ public class ValidateArgs {
         String date = args[2].substring(7);
         SimpleDateFormat inputDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         try {
-            inputDateFormat.parse(date);
+           inputDateFormat.parse(date);
 
         } catch (ParseException e) {
             System.out.println("Неправильный формат даты: yyyy-MM-dd");

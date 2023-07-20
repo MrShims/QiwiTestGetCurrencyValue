@@ -10,7 +10,7 @@ import static org.hludov.XMLparser.parseXML;
 
 public class CurrencyValueConnection {
 
-    public static String getCurrencyValue(String date, String charCode) {
+    public static String getCurrencyValue(String date) {
         String apiURL = "http://www.cbr.ru/scripts/XML_daily.asp?date_req=" + date;
 
         try {
@@ -29,7 +29,7 @@ public class CurrencyValueConnection {
                 }
                 reader.close();
 
-                return parseXML(response.toString(), charCode);
+                return response.toString();
             } else {
                 System.out.println("Ошибка " + responseCode + ": Невозможно получить данные о курсах валют.");
                 return null;

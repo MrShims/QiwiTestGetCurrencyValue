@@ -20,4 +20,14 @@ class DateConverterTest {
 
     }
 
+    @Test
+    void testWrongDateFormat() {
+
+        String inputDate = "202210-08";
+        String outputDate = DateConverter.convertDateFormat(inputDate);
+        Assertions.assertEquals(outputDate, "");
+
+    }
+
+
 }

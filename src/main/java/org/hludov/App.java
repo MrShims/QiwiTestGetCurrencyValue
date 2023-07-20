@@ -21,7 +21,12 @@ public class App {
                     charCode = args[1].substring(7);
                     date = args[2].substring(7);
                     String convertedDate = DateConverter.convertDateFormat(date);
-                    System.out.println(getCurrencyValue(convertedDate, charCode));
+
+                   String responseData=getCurrencyValue(convertedDate);
+
+                    assert responseData != null;
+                    System.out.println(XMLparser.parseXML(responseData,charCode));
+
 
 
                 } catch (StringIndexOutOfBoundsException e) {
